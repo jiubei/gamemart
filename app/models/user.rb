@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :reviews
-  validates FILL_IN, presence: true     #Replaces FILL IN with the right code.
-  validates FILL_IN, presence: true     #Replaces FILL IN with the right code.
+  validates :username, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+
 end
