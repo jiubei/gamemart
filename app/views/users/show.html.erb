@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.username) %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -7,7 +7,7 @@
         <%= @user.username %>
       </h1>
       <h2>
-        <%= @user.first_name + " " + @user.last_name %>
+        <%= @user.first_name %> <%= @user.last_name %>
       </h2>
     </section>
   </aside>
