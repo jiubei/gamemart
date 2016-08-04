@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(review_params)
     if @review.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Review created!"
       redirect_to root_url
     else
       @feed_items = []

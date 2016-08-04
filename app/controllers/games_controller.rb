@@ -10,6 +10,8 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @game_reviews = Review.where(game_id: params[:id])
+    @game = Game.find(params[:id])
   end
 
   # GET /games/new

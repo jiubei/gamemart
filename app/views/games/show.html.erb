@@ -1,18 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @game.name %>
+  <h1><strong><%= @game.name %></strong></h1>
+
 </p>
 
 <p>
-  <strong>Picture:</strong>
   <%= image_tag @game.picture, class: "showpic" %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @game.description %>
+  <strong>Genre:</strong>
+  <%= @game.genre %>
 </p>
 
 <p>
@@ -21,9 +20,19 @@
 </p>
 
 <p>
-  <strong>Genre:</strong>
-  <%= @game.genre %>
+  <strong>Description:</strong>
+  <%= @game.description %>
 </p>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<section class="review_form">
+  <%= render 'shared/review_form' %>
+</section>
+
+<div class="col-md-8">
+  <h3>Review Feed</h3>
+    <% @game_reviews.each do |x| %>
+      <p> <%= gravatar_for User.find(x.user_id) %> </p>
+      <p> <strong> <h4> <%= User.find(x.user_id).username %> </h4> </strong> </p>
+      <p> <%= x.content %> </p>
+    <% end %>
+</div>
