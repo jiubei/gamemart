@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
+  post '/game/:id/review/new', to: 'review#create'
+
   root 'static_pages#home'
   get     '/home',    to: 'static_pages#home'
   get     '/help',    to: 'static_pages#help'
@@ -16,5 +18,9 @@ Rails.application.routes.draw do
   resources :users
   resources :games
   resources :platforms
+
+  resources :games do
+    resources :reviews
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
