@@ -10,14 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803134545) do
+ActiveRecord::Schema.define(version: 20160804070059) do
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.string   "picture"
+    t.text     "description"
+    t.integer  "platform_id"
+    t.string   "genre"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["platform_id"], name: "index_games_on_platform_id"
+  end
+
+  create_table "platforms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
+    t.integer  "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "picture"
+    t.index ["game_id"], name: "index_reviews_on_game_id"
     t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
